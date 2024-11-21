@@ -6,7 +6,7 @@ import com.happyrecord.servecenter.interestedrecordserve.pojo.dto.UserLoginDTO;
 import com.happyrecord.servecenter.interestedrecordserve.pojo.enity.User;
 import com.happyrecord.servecenter.interestedrecordserve.pojo.vo.UserLoginVO;
 import com.happyrecord.servecenter.interestedrecordserve.property.JwtProperties;
-import com.happyrecord.servecenter.interestedrecordserve.servicel.UserService;
+import com.happyrecord.servecenter.interestedrecordserve.service.UserService;
 import com.happyrecord.servecenter.interestedrecordserve.utils.JwtUtil;
 import com.happyrecord.servecenter.interestedrecordserve.utils.Result;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -34,6 +34,7 @@ public class UserController {
    */
   @PostMapping("/login")
   public Result<UserLoginVO> login(@RequestBody UserLoginDTO userLoginDTO){
+    System.out.println(userLoginDTO);
       User user = userService.wxLogin(userLoginDTO);
     //为微信用户生成jwt令牌
     Map<String , Object> claims = new HashMap<>();

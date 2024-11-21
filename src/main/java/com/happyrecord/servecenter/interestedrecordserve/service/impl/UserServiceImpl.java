@@ -1,19 +1,19 @@
-package com.happyrecord.servecenter.interestedrecordserve.servicel.impl;
+package com.happyrecord.servecenter.interestedrecordserve.service.impl;
 
 
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
+import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.happyrecord.servecenter.interestedrecordserve.mapper.UserMapper;
 import com.happyrecord.servecenter.interestedrecordserve.pojo.dto.UserLoginDTO;
 import com.happyrecord.servecenter.interestedrecordserve.pojo.enity.User;
 import com.happyrecord.servecenter.interestedrecordserve.property.WeChatProperties;
-import com.happyrecord.servecenter.interestedrecordserve.servicel.UserService;
+import com.happyrecord.servecenter.interestedrecordserve.service.UserService;
 import com.happyrecord.servecenter.interestedrecordserve.utils.HttpClientUtil;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.io.Console;
 import java.time.LocalDateTime;
 import java.util.HashMap;
 import java.util.Map;
@@ -43,8 +43,10 @@ public class UserServiceImpl implements UserService {
         }
 
         //判断当前用户是否为新用户
-        User user = userMapper.getByOpenid(openid);
-
+//        User user = userMapper.getByOpenid(openid);
+         QueryWrapper<User> queryWrapper = new QueryWrapper<>();
+        queryWrapper.like("openid", openid);
+          User user =userMapper.selectOne(queryWrapper);
         //如果是新用户，自动完成注册
         if(user == null){
             user = User.builder()

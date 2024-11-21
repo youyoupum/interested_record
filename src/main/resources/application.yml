@@ -5,13 +5,11 @@ spring:
     username: root
     password: 123456
     url: jdbc:mysql://localhost:3306/interest_record?useSSL=false&serverTimezone=UTC
-mybatis:
-  #mapper????
-  mapper-locations: classpath:mapper/*.xml
-  type-aliases-package: com.happyrecord.servecenter.interestedrecordserve.pojo.entity
-  configuration:
-    #??????
-   map-underscore-to-camel-case: true
+  mybatis:
+    mapper-locations: classpath:mapper/*.xml
+    type-aliases-package: com.happyrecord.servecenter.interestedrecordserve.pojo.entity
+    configuration:
+      map-underscore-to-camel-case: true
 record:
   jwt:
     # 设置jwt签名加密时使用的秘钥
