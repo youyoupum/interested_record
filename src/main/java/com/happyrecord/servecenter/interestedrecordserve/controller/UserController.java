@@ -6,7 +6,7 @@ import com.happyrecord.servecenter.interestedrecordserve.pojo.dto.UserLoginDTO;
 import com.happyrecord.servecenter.interestedrecordserve.pojo.enity.User;
 import com.happyrecord.servecenter.interestedrecordserve.pojo.vo.UserLoginVO;
 import com.happyrecord.servecenter.interestedrecordserve.property.JwtProperties;
-import com.happyrecord.servecenter.interestedrecordserve.servicel.UserService;
+import com.happyrecord.servecenter.interestedrecordserve.service.UserService;
 import com.happyrecord.servecenter.interestedrecordserve.utils.JwtUtil;
 import com.happyrecord.servecenter.interestedrecordserve.utils.Result;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,7 +19,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 @RestController
-@RequestMapping("/user")
+@RequestMapping("/user/user")
 public class UserController {
   @Autowired
   private UserService userService;
@@ -38,6 +38,7 @@ public class UserController {
     //为微信用户生成jwt令牌
     Map<String , Object> claims = new HashMap<>();
     claims.put(JwtClaimsConstant.USER_ID,user.getId());
+    System.out.println(jwtProperties.getUserTtl());
     String token = JwtUtil.createJWT(jwtProperties.getUserSecretKey(),jwtProperties.getUserTtl(),claims);
 
     UserLoginVO userLoginVO = UserLoginVO.builder()

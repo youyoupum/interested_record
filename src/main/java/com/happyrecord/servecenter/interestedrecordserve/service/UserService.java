@@ -1,4 +1,4 @@
-package com.happyrecord.servecenter.interestedrecordserve.servicel;
+package com.happyrecord.servecenter.interestedrecordserve.service;
 
 import com.happyrecord.servecenter.interestedrecordserve.pojo.dto.UserLoginDTO;
 import com.happyrecord.servecenter.interestedrecordserve.pojo.enity.User;
@@ -10,4 +10,6 @@ public interface UserService {
    * @return
    */
   User wxLogin(UserLoginDTO userLoginDTO);
+
+  User userMessage(Integer id);
 }

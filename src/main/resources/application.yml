@@ -1,28 +1,30 @@
 # DataSource Config
+server:
+  port: 1008
 spring:
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
     username: root
     password: 123456
     url: jdbc:mysql://localhost:3306/interest_record?useSSL=false&serverTimezone=UTC
-mybatis:
-  #mapper????
-  mapper-locations: classpath:mapper/*.xml
-  type-aliases-package: com.happyrecord.servecenter.interestedrecordserve.pojo.entity
-  configuration:
-    #??????
-   map-underscore-to-camel-case: true
+  mybatis:
+    mapper-locations: classpath:mapper/*.xml
+    type-aliases-package: com.happyrecord.servecenter.interestedrecordserve.pojo.entity
+    configuration:
+      map-underscore-to-camel-case: true
+  jackson:
+    date-format: yyyy-MM-dd HH:mm:ss
+    time-zone: GMT+8
 record:
   jwt:
     # 设置jwt签名加密时使用的秘钥
     admin-secret-key: itcast
     # 设置jwt过期时间
-    admin-ttl: 7200000
+    admin-ttl: 7200000000
     # 设置前端传递过来的令牌名称
-    admin-token-name: token
     user-secret-key: interestingrecordinterestingrecord
     user-ttl: 7200000
-    user-token-name: authentication
+    user-token-name: token
   wechat:
     appid: wxc49ef39ba2fe20fd
     secret: 091ad32806a73774a35d5164a2733a2f
