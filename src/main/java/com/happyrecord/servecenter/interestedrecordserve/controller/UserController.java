@@ -34,6 +34,7 @@ public class UserController {
    */
   @PostMapping("/login")
   public Result<UserLoginVO> login(@RequestBody UserLoginDTO userLoginDTO){
+    System.out.println(userLoginDTO);
       User user = userService.wxLogin(userLoginDTO);
     //为微信用户生成jwt令牌
     Map<String , Object> claims = new HashMap<>();
