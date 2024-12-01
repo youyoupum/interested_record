@@ -20,4 +20,6 @@ public interface CommentsService{
   List<CommentsGetVO> pageComments(Integer noteId, Integer page);
 
   CommentsGetVO addComment(CommentsAddDTO commentsAddDTO);
+
+  void toPraise(Integer commentId);
 }

@@ -10,4 +10,6 @@ public interface CommentsRepo {
   List<Comments> pageComments(Integer noteId, Integer page, int size);
 
   Comments addComment(Comments comments);
+
+  void toPraise(Integer commentId);
 }

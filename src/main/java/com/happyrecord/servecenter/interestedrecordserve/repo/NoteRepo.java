@@ -12,4 +12,8 @@ public interface NoteRepo {
   List<Note> page(Integer page, int size);
 
   Note getNote(Integer id);
+
+  List<Note> userListNode();
+
+  List<Note> searchNote(String search);
 }

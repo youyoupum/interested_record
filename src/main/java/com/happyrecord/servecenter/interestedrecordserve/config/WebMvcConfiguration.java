@@ -34,7 +34,14 @@ public class WebMvcConfiguration extends WebMvcConfigurationSupport {
     registry.addInterceptor(jwtTokenUserInterceptor)
         .addPathPatterns("/user/**")
         .excludePathPatterns("/user/user/login")
-        .excludePathPatterns("/user/note/page");
+        .excludePathPatterns("/user/note/page")
+        .excludePathPatterns("/static/**");
+  }
+
+  @Override
+  public void addResourceHandlers(ResourceHandlerRegistry registry) {
+    registry.addResourceHandler("/static/**")
+        .addResourceLocations("classpath:/static/");
   }
 
 }

@@ -5,6 +5,8 @@ import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableId;
 import java.time.LocalDateTime;
 import java.io.Serializable;
+
+import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.experimental.Accessors;
@@ -64,6 +66,7 @@ public class Replies implements Serializable {
      * 回复的时间
      */
     @TableField("create_at")
+    @JsonFormat(pattern = "yyyy-MM-dd hh:mm:ss", timezone = "GMT+8")
     private LocalDateTime createAt;
 
     /**
@@ -72,5 +75,7 @@ public class Replies implements Serializable {
     @TableField("user_img")
     private String userImg;
 
+    @TableField("user_id")
+    private Integer userId;
 
 }

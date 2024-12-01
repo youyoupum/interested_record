@@ -1,6 +1,7 @@
 package com.happyrecord.servecenter.interestedrecordserve.repo.impl;
 
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
+import com.baomidou.mybatisplus.core.conditions.update.UpdateWrapper;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.happyrecord.servecenter.interestedrecordserve.mapper.CommentsMapper;
 import com.happyrecord.servecenter.interestedrecordserve.pojo.enity.Comments;
@@ -30,5 +31,11 @@ public class CommentsRepoImpl implements CommentsRepo {
   public Comments addComment(Comments comments) {
     commentsMapper.insert(comments);
     return comments;
+  }
+
+  public void toPraise(Integer commentId) {
+    UpdateWrapper<Comments> updateWrapper = new UpdateWrapper<>();
+    updateWrapper.eq("id", commentId).setIncrBy("praise", 1);
+    commentsMapper.update(null, updateWrapper); // 执行更新操作
   }
 }

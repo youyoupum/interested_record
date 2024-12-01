@@ -1,19 +1,20 @@
 package com.happyrecord.servecenter.interestedrecordserve.pojo.enity;
 
+import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableName;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import com.baomidou.mybatisplus.extension.handlers.JacksonTypeHandler;
+import lombok.*;
+import lombok.experimental.Accessors;
 
 import java.io.Serializable;
 import java.time.LocalDateTime;
+import java.util.List;
 
 @Data
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-@TableName("user")
+@TableName(autoResultMap = true)
 public class User implements Serializable {
 
   private static final long serialVersionUID = 1L;
@@ -40,4 +41,9 @@ public class User implements Serializable {
 
   //注册时间
   private LocalDateTime createTime;
+
+  private String personSignature;
+
+  @TableField(value = "regions", typeHandler = JacksonTypeHandler.class)
+  private List<String> regions;
 }

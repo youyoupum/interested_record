@@ -78,7 +78,6 @@ public class CommentsServiceImpl implements CommentsService {
   }
 
 
-
   public CommentsGetVO addComment(CommentsAddDTO commentsAddDTO) {
     Comments comments = new Comments();
     BeanUtils.copyProperties(commentsAddDTO,comments);
@@ -93,5 +92,9 @@ public class CommentsServiceImpl implements CommentsService {
     BeanUtils.copyProperties(comments, commentsGetVO);
     commentsGetVO.setLiked(false);
     return commentsGetVO;
+  }
+
+  public void toPraise(Integer commentId) {
+    commentsRepo.toPraise(commentId);
   }
 }

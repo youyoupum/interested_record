@@ -7,13 +7,11 @@ import com.happyrecord.servecenter.interestedrecordserve.pojo.enity.User;
 import com.happyrecord.servecenter.interestedrecordserve.pojo.vo.UserLoginVO;
 import com.happyrecord.servecenter.interestedrecordserve.property.JwtProperties;
 import com.happyrecord.servecenter.interestedrecordserve.service.UserService;
+import com.happyrecord.servecenter.interestedrecordserve.utils.BaseContext;
 import com.happyrecord.servecenter.interestedrecordserve.utils.JwtUtil;
 import com.happyrecord.servecenter.interestedrecordserve.utils.Result;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -48,5 +46,10 @@ public class UserController {
         .token(token)
         .build();
     return Result.success(userLoginVO);
+  }
+
+  @GetMapping("/message")
+  public Result<User> userMessage(){
+    return Result.success(userService.userMessage(BaseContext.getCurrentId()));
   }
 }
